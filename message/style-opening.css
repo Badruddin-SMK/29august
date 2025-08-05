@@ -1,0 +1,211 @@
+html, body {
+  height: auto;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  color: #5c1a3b;
+  background: linear-gradient(270deg, #ffe0f0, #ffc2d1, #ffe0f0);
+  background-size: 600% 600%;
+  animation: bgMove 20s ease infinite;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+}
+
+.container {
+  text-align: center;
+  padding: 50px 20px;
+  z-index: 1;
+  position: relative;
+  min-height: 100px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  animation: glow 1.5s ease-in-out infinite alternate, fadeInUp 1s ease-out;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  animation: fadeInUp 1.6s ease-out;
+}
+
+button {
+  background-color: #ff6fa1;
+  color: white;
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin: 10px 5px;
+  box-shadow: 0 4px 8px rgba(255, 105, 135, 0.3);
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+button:hover {
+  background-color: #e85d91;
+  transform: scale(1.05);
+}
+
+.doa-button {
+  display: inline-block;
+  background-color: #ff6fa1;
+  color: white;
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(255, 105, 135, 0.3);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.doa-button:hover {
+  background-color: #e85d91;
+  transform: scale(1.05);
+  text-decoration: none;
+  color: white;
+}
+
+#message {
+  margin-top: 30px;
+  background-color: #fff0f5;
+  padding: 30px 20px;
+  border-radius: 15px;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  animation: fadeInUp 1s ease-out, pulse 2s infinite;
+  position: relative;
+  z-index: 2;
+  word-break: break-word;
+}
+
+.hidden {
+  display: none;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  font-size: 24px;
+  font-weight: bold;
+  background: none;
+  border: none;
+  color: #d63384;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #b02a68;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Animations */
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #ff77a9, 0 0 20px #ff77a9, 0 0 30px #ff77a9;
+  }
+  to {
+    text-shadow: 0 0 20px #ffaad1, 0 0 30px #ffaad1, 0 0 40px #ffaad1;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  html, body {
+    min-height: 100vh;
+    height: auto;
+    overflow-y: auto;
+    padding-bottom: 40px;
+  }
+  .container {
+    padding: 20px 5px;
+    min-height: 100px;
+  }
+  h1 {
+    font-size: 1.4rem;
+  }
+  .subtitle {
+    font-size: 0.95rem;
+  }
+  button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 12px 0;
+    margin: 8px 0;
+    display: block;
+  }
+  #message {
+    font-size: 1rem;
+    padding: 18px 8px;
+    max-width: 98vw;
+  }
+}
+
+.big-love-anim {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.2);
+  font-size: 10vw;
+  opacity: 0;
+  z-index: 9999;
+  animation: loveIn 1.2s cubic-bezier(.68,-0.55,.27,1.55) forwards, loveOut 0.8s 2.2s forwards;
+  pointer-events: none;
+}
+
+@keyframes loveIn {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.2);}
+  60% { opacity: 1; transform: translate(-50%, -50%) scale(1.2);}
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1);}
+}
+
+@keyframes loveOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}

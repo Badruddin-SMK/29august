@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birtdhday</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <body>
+  <canvas id="confetti"></canvas>
+  <canvas id="hearts"></canvas>
+
+  <div id="big-love" class="big-love-anim">💖</div>
+  <div class="container">
+    <div id="custom-alert" class="alert hidden">
+      <span>Terima kasih udah menyalakan api, silahkan klik kuenya 🎂</span>
+      <span class="close-btn" onclick="closeAlert()">×</span>
+    </div>
+
+    <h1>🎉 Happy Birthday 🎉</h1>
+    <p class="subtitle">untuk perempuan cantikk 🤍</p>
+    <p class="desk">29 Agustus 2009</p>
+
+    <div class="cake-wrapper" onclick="goToNextPage()">
+      <img src="img/cake.png" class="cake" alt="Kue" />
+      <img src="img/candle.png" class="candle" alt="Lilin" />
+      <img src="img/fire.png" class="fire hidden" id="fire" alt="Api Lilin" />
+    </div>
+
+    <div class="controls">
+      <button onclick="turnOnFire()">Nyalakan Api 🔥</button>
+      <p class="info">Klik kuenya setelah api menyala ya 🎂</p>
+    </div>
+  </div>
+<script>
+  let isLit = false;
+
+  function turnOnFire() {
+    const fire = document.getElementById('fire');
+    const alertBox = document.getElementById('custom-alert');
+
+    fire.classList.remove('hidden');
+    alertBox.classList.remove('hidden');
+    isLit = true;
+  }
+
+  function goToNextPage() {
+    const cake = document.querySelector('.cake-wrapper');
+
+    if (isLit) {
+      window.location.href = "message/opening.html"; // ganti jika perlu
+    } else {
+      // Tambahkan efek shake pada cake
+      cake.classList.add('shake');
+
+      // Hapus efek shake setelah animasi selesai
+      setTimeout(() => {
+        cake.classList.remove('shake');
+      }, 500);
+
+      // Bisa juga pakai alert custom jika ingin
+      const warn = document.createElement('div');
+      warn.className = 'alert-native';
+      warn.innerText = 'Nyalakan api lilinnya dulu yuk 🎂';
+      document.body.appendChild(warn);
+
+      // Hapus pesan setelah beberapa detik
+      setTimeout(() => {
+        warn.remove();
+      }, 3000);
+    }
+  }
+
+  function closeAlert() {
+    document.getElementById('custom-alert').classList.add('hidden');
+  }
+
+  // ...existing code...
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    const love = document.getElementById('big-love');
+    if (love) love.remove();
+  }, 3000);
+});
+// ...existing code...
+</script>
+</body>
+</html>

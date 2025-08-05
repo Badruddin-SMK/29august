@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital@0;1&family=Inter:wght@300;400;500;700;900&family=Karla:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:300,400;500;600;700;800;900&family=Readex+Pro:300,400;500;600;700;800&family=Roboto:300,400;500;700;900;1000;100;200;200;300;500;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", "Segoe UI", "sans-serif";
+}
+
+/* Canvas styles for confetti and hearts */
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body {
+  background: linear-gradient(270deg, #fff0f5, #ffe0f0, #f0f8ff, #fff0f5);
+  background-size: 600% 600%;
+  animation: bgMove 20s ease infinite;
+  color: #333;
+  font-family: "Poppins", "Segoe UI", "sans-serif";
+  line-height: 1.6;
+  padding: 20px;
+  min-height: 100vh;
+  margin: 0;
+  position: relative;
+}
+
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.doa-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+  z-index: 3; /* Ensure content is above canvas */
+}
+
+.doa-container::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: rotate(30deg);
+  animation: sparkle 2s linear infinite;
+}
+
+@keyframes sparkle {
+  0% { transform: translateX(-100%) translateY(-50%) rotate(30deg); }
+  100% { transform: translateX(200%) translateY(-50%) rotate(30deg); }
+}
+
+h1, h2 {
+  color: #d63384;
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.doa-container > h1 {
+  margin-top: 20px;
+  font-size: 2.5rem;
+  text-align: center;
+  background: linear-gradient(45deg, #ff77a9, #d63384);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-align: center;
+  margin: 30px 0;
+  font-size: 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+.doa-container > h2 {
+  font-size: 2rem;
+  margin: 30px 0 15px;
+  color: #c2185b;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.doa-container > p {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.prayer {
+  background: rgba(255, 255, 255, 0.7);
+  padding: 25px;
+  border-radius: 15px;
+  margin: 20px 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 2;
+  border-left: 5px solid #ff77a9;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.prayer p {
+  margin-bottom: 15px;
+  text-align: left;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.prayer p:last-child {
+  margin-bottom: 0;
+}
+
+/*.doa-list {
+  background: rgba(255, 255, 255, 0.7);
+  padding: 25px;
+  border-radius: 15px;
+  margin: 20px 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 2;
+  border-left: 5px solid #ff77a9;
+}*/
+
+.doa-list ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.doa-list li {
+  padding: 10px 0 10px 30px;
+  position: relative;
+  font-size: 1.1rem;
+  border-bottom: 1px dashed rgba(210, 105, 156, 0.3);
+}
+
+.doa-list li:last-child {
+  border-bottom: none;
+}
+
+.doa-list li::before {
+  content: "♥";
+  color: #ff6fa1;
+  position: absolute;
+  left: 0;
+  font-size: 1.2rem;
+}
+
+.penutup {
+  text-align: center;
+  font-style: italic;
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #d63384;
+  position: relative;
+  z-index: 2;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  .doa-container {
+    padding: 15px;
+  }
+  
+  .doa-container > h1 {
+    font-size: 2rem;
+  }
+  
+  .doa-container > h2 {
+    font-size: 1.5rem;
+  }
+  
+  .doa-container > p,
+  .penutup {
+    font-size: 1rem;
+  }
+  
+  .prayer,
+  .doa-list {
+    padding: 15px;
+  }
+  
+  .prayer p,
+  .doa-list li {
+    font-size: 1rem;
+  }
+}
